@@ -1,0 +1,56 @@
+.left{
+    float: left;
+    width: 50%;
+    background-color:#F39681;
+    padding-top:160px;
+    padding-bottom:200px;
+}
+.right{
+    float: left;
+    width: 50%;
+    align-content: center;
+}
+.title{
+    padding-top:300px;
+    color: #FF0065;
+    font-size:50px;
+    padding-left:230px;
+    padding-right:230px;
+    padding-bottom:50px;
+}
+.subtitle{
+    color: #8F8E8E;
+    font-size:20px;
+    padding-left:280px;
+    padding-right:280px;
+    line-height: 25px;
+   
+}
+.translatebutton{
+    width: 32%;
+    height: 3em;
+    color:white;
+    background-image: linear-gradient(to top left, #FF0065,  #ff579a);
+    align-items: center;
+    transition: 0.5s;
+    font-size:19px;
+    border-color: #ff579a;
+    border-radius: 1.5em;
+	cursor: pointer;
+    text-decoration:  none;
+    margin:10px;
+}
+.playbutton{
+    width: 32%;
+    height: 3em;
+    font-size:19px;
+    color: white;
+    background-image: linear-gradient(to top left,#FFB58A,  #fdcfb5);
+    align-items: center;
+    transition: 0.5s;
+    border-color: #FFB58A;
+    border-radius: 1.5em;
+	cursor: pointer;
+    text-decoration:  none;
+    margin:10px;
+}
