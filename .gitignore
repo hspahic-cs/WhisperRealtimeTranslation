@@ -7,7 +7,13 @@
 
 # testing
 /coverage
-.env
+*.mp3
+*.mp4
+*.mpeg
+*.mpga
+*.m4a
+*.wav
+*.webm
 
 # production
 /build
@@ -24,3 +30,6 @@ yarn-debug.log*
 yarn-error.log*
 
 .DS_Store
+
+# security
+*.env
