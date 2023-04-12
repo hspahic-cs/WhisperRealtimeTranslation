@@ -1,0 +1,27 @@
+name: Run tests
+env:
+  CI: true
+"on":
+  push: null
+  pull_request:
+    branches:
+      - main
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Install and test
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "npm"
+          cache-dependency-path: universal-translator/package-lock.json
+      - run: npm install --package-lock-only
+        working-directory: universal-translator
+      - run: npm ci
+        working-directory: universal-translator
+      - run: npm test --if-present
+        working-directory: universal-translator
