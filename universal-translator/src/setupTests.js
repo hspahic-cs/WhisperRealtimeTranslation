@@ -2,4 +2,14 @@
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
-import '@testing-library/jest-dom';
+import "@testing-library/jest-dom";
+
+if (typeof window.URL.createObjectURL === "undefined") {
+  window.URL.createObjectURL = jest.fn();
+}
+
+if (typeof window.Worker === "undefined") {
+  window.Worker = jest.fn();
+}
+
+//if sender.addEventListener is not a function then it will be a mock function
