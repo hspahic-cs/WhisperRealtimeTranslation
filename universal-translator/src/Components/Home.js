@@ -9,39 +9,10 @@ import {
 } from "react-media-recorder";
 import axios from "axios";
 
-async function get_translation(filePath) {
-  const response = await axios.post("");
-
-  const options = {
-    method: "post",
-    url: "https://api.openai.com/v1/audio/transcriptions",
-    data: "",
-  };
-
-  // const response = await axios.post(
-  //   "https://api.openai.com/v1/audio/transcriptions",
-  //   formData,
-  //   {
-  //     headers: {
-  //       ...formData.getHeaders(),
-  //       Authorization: "Bearer " + process.env.REACT_APP_OPENAI_API_KEY,
-  //       "Content-Type": "multipart/form-data",
-  //     },
-  //   }
-  // );
-}
-
-// async function get_translation(filePath, form) {
-//   const resp = await openai.createTranslation(
-//     fs.createReadStream("audio.mp3"),
-//     "whisper-1"
-//   );
-//   console.log(resp.text);
-// }
-
 const Home = () => {
   const [isRecording, setIsRecording] = useState(false);
   const [hasAudio, setHasAudio] = useState(false);
+  const [translatedAudio, setTranslatedAudio] = useState("");
 
   const blobToFile = async (blobUrl) => {
     const audioBlob = await fetch(blobUrl).then((r) => r.blob());
@@ -60,8 +31,7 @@ const Home = () => {
         },
       }
     );
-
-    console.log(response);
+    setTranslatedAudio(response.data.text);
   };
 
   return (
@@ -71,14 +41,14 @@ const Home = () => {
       </div>
       <div className="right">
         <div className="title">Translate any language to english</div>
-        {/* <div className="subtitle">
-          Upload an Audio File below, click translate, then click play to hear
-          your audio file translated to english
-        </div> */}
+        <div className="subtitle">
+          Record, click translate, then see your audio file translated to
+          English
+        </div>
 
-        {/* <div>
+        <div>
           <img className="upload" src={upload} alt="upload"></img>
-        </div> */}
+        </div>
 
         <CountUp start={0} end={100}>
           {({ countUpRef, start, reset }) => (
@@ -137,6 +107,7 @@ const Home = () => {
                   </div>
                 )}
               />
+              {translatedAudio ? <p>{translatedAudio}</p> : <p></p>}
             </div>
           )}
         </CountUp>
