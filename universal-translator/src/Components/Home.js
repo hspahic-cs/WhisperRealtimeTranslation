@@ -7,10 +7,62 @@ import {
   ReactMediaRecorder,
   useReactMediaRecorder,
 } from "react-media-recorder";
+import axios from "axios";
+
+async function get_translation(filePath) {
+  const response = await axios.post("");
+
+  const options = {
+    method: "post",
+    url: "https://api.openai.com/v1/audio/transcriptions",
+    data: "",
+  };
+
+  // const response = await axios.post(
+  //   "https://api.openai.com/v1/audio/transcriptions",
+  //   formData,
+  //   {
+  //     headers: {
+  //       ...formData.getHeaders(),
+  //       Authorization: "Bearer " + process.env.REACT_APP_OPENAI_API_KEY,
+  //       "Content-Type": "multipart/form-data",
+  //     },
+  //   }
+  // );
+}
+
+// async function get_translation(filePath, form) {
+//   const resp = await openai.createTranslation(
+//     fs.createReadStream("audio.mp3"),
+//     "whisper-1"
+//   );
+//   console.log(resp.text);
+// }
 
 const Home = () => {
   const [isRecording, setIsRecording] = useState(false);
   const [hasAudio, setHasAudio] = useState(false);
+
+  const blobToFile = async (blobUrl) => {
+    const audioBlob = await fetch(blobUrl).then((r) => r.blob());
+    const audioFile = new File([audioBlob], "voice.wav", { type: "audio/wav" });
+    const formData = new FormData();
+    formData.append("file", audioFile);
+    formData.append("model", "whisper-1");
+
+    const response = await axios.post(
+      "https://api.openai.com/v1/audio/transcriptions",
+      formData,
+      {
+        headers: {
+          Authorization: "Bearer " + process.env.REACT_APP_OPEN_API_KEY,
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+
+    console.log(response);
+  };
 
   return (
     <div className="overall">
@@ -71,18 +123,23 @@ const Home = () => {
                       </div>
                     )}
                     <audio src={mediaBlobUrl}></audio>
+                    <div>
+                      <button
+                        className="translate-button"
+                        disabled={!hasAudio}
+                        onClick={async () => {
+                          await blobToFile(mediaBlobUrl);
+                        }}
+                      >
+                        Translate
+                      </button>
+                    </div>
                   </div>
                 )}
               />
             </div>
           )}
         </CountUp>
-
-        <div>
-          <button className="translate-button" disabled={!hasAudio}>
-            Translate
-          </button>
-        </div>
       </div>
     </div>
   );
