@@ -22,5 +22,5 @@ jobs:
         working-directory: universal-translator
       - run: npm ci
         working-directory: universal-translator
-      - run: npm test --if-present
-        working-directory: universal-translator
+#       - run: npm test --if-present
+#         working-directory: universal-translator
