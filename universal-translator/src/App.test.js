@@ -1,8 +1,9 @@
+import "./mockFunc.mock";
 import { render, screen } from "@testing-library/react";
 import App from "./App";
 
-test("upload image is displayed", () => {
+test("translate button is disabled on page load", () => {
   render(<App />);
-  const uploadImage = screen.getByAltText("upload");
-  expect(uploadImage).toBeInTheDocument();
+  const translateButton = screen.getByText("Translate");
+  expect(translateButton).toBeDisabled();
 });
