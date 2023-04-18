@@ -11,7 +11,7 @@
     align-content: center;
 }
 .title{
-    padding-top:300px;
+    padding-top:160px;
     color: #FF0065;
     font-size:50px;
     padding-left:230px;
@@ -53,6 +53,7 @@
 	cursor: pointer;
     text-decoration:  none;
     margin:10px;
+    visibility: visible;
 }
 
 .translate-button:disabled{
@@ -61,6 +62,7 @@
     border-color: #534d49;
     background-image: linear-gradient(to top left,#6a625d,  #716664);
     cursor: not-allowed;
+    visibility: hidden;
 }
 
 #stop-inner-circle {
@@ -70,17 +72,47 @@
     color: rgba(255, 255, 255, 0.85);
     font-family: "Lato", Verdana, sans-serif;
     font-size: 30px;
-    padding-top: 60px;
-    width: 150px;
-    height: 90px;
+    margin-bottom:25px;
     border-radius: 120px;
     background: radial-gradient(#EF495A, #DE2839);
     box-shadow: 1px 2px 1px rgba(255, 255, 255, 0.15) inset;
-    margin: 0 auto;
     top: 25px;
+    width: 32%;
+    height: 2em;
   }
   
   #stop-main-circle:hover {
-    box-shadow: 1px 3px 1px #CE152A;
     cursor: pointer;
+  }
+  .time {
+    font-size: 1.5rem;
+    padding: 2rem;
+  }
+  .status{
+      font-size:30px;
+      color:grey
+  }
+  .countUp{
+      visibility: hidden;
+  }
+  .speakButt{
+    width: 200px;
+    height: 2em;
+    background: radial-gradient(#FEC059, #FEC059);
+    box-shadow: 1px 2px 1px rgba(255, 255, 255, 0.15) inset;
+    transition: 0.5s;
+    font-size:19px;
+    color:white;
+    border-color: #FEC059;
+    border-radius: 1.5em;
+	cursor: pointer;
+    text-decoration:  none;
+  }
+  .translatedTexts{
+      justify-content: center;
+      display:grid;
+  }
+
+  .textTra{
+      font-size:25px;
   }
